@@ -1,114 +1,160 @@
-\documentclass[aspectratio=169,11pt]{beamer}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage[english]{babel}
-\usepackage{amsmath,amssymb}
-\usepackage{booktabs}
-\usetheme{default}
-\usecolortheme{seahorse}
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamerfont{frametitle}{size=\large}
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage{fontspec}
+\usepackage{assets/ide-beamer}
+\hypersetup{colorlinks=true,urlcolor=IDERed}
 
-\title{Aouad, Lykouris \& Zhong (2026)}
-\subtitle{\emph{Human-AI Productivity Paradoxes} --- Section 2}
-\author{Alexander Quispe}
-\date{Repository 1 \textperiodcentered{} Week of August 17--22}
+\title{Artificial Intelligence in the Knowledge Economy}
+\author{John Barraza}
+\institute{Universidad del Pacífico · AI Economic Modelling}
+\date{September 2026}
 
 \begin{document}
 
-%================= PORTADA (con el enlace al repositorio) =============
+% 1
 \begin{frame}[plain]
-  \titlepage
-  \begin{center}\small
-    \texttt{github.com/alexanderquispe/ai-01-aouad}
-  \end{center}
+  \vspace{.45cm}
+  {\color{IDERed}\large\bfseries REPOSITORY 05}\par\vspace{.28cm}
+  {\usebeamerfont{title}\color{IDENavy}Artificial Intelligence in the\\Knowledge Economy}\par\vspace{.28cm}
+  {\large Ide \& Talamàs (2025), \textit{Journal of Political Economy}}\par\vspace{.52cm}
+  \begin{tikzpicture}
+    \draw[IDENavy,line width=2pt] (0,0)--(11.5,0);
+    \draw[IDERed,line width=5pt] (8.2,0)--(11.5,0);
+  \end{tikzpicture}
+  \vfill
+  {\small John Barraza · Universidad del Pacífico}\hfill{\small\href{\repoURL}{github.com/johnbarraza/ai-05-ide}}
 \end{frame}
 
-%================= 1. EL ART\'ICULO ====================================
-\begin{frame}{1 \textperiodcentered{} The paper and the agent's problem}
-  \textbf{Question.} When does AI assistance make a worker \emph{less} productive?
+% 2
+\begin{frame}{1. The paper and the agent's problem}
+\small
+\begin{columns}[T,onlytextwidth]
+  \column{.43\textwidth}
+  \tagpill{Question}\par\vspace{.18cm}
+  How do AI capability and autonomy reorganize knowledge work, output, and wages?
+  \vspace{.28cm}
+  \begin{block}{One mechanism}
+  Workers attempt problems; solvers handle exceptions. AI changes matching, span of control, and surplus shares.
+  \end{block}
+  \vspace{.12cm}
+  \bluepill{Technology}\quad $n(z)=\dfrac{1}{h(1-z)}$
 
-  \medskip
-  \textbf{The single mechanism.} AI is a \emph{perfectly substitutable input}:
-  skill, effort and assistance enter production only through their sum.
-  \[ x \;=\; s + e + a \]
-
-  \medskip
-  \textbf{The agent's problem.} Choose effort $e$ to maximise output net of a
-  \emph{linear} cost:
-  \[ \max_{e \ge 0}\; p(s+e+a) \;-\; \gamma e \]
-
-  \smallskip
-  \begin{itemize}\small
-    \item $p$ weakly increasing, concave, twice differentiable; $\gamma>0$.
-    \item Only constraint: $e \ge 0$ --- and it binds. That is the whole result.
-  \end{itemize}
+  \column{.53\textwidth}
+  \tagpill{Competitive firm's choice}\par\vspace{.12cm}
+  For human worker $z$, choose solver $s\ge z$:
+  \[
+    \max_{s\ge z}\ \Pi^{nA}_2(s,z)
+    =n(z)[s-w(z)]-w(s).
+  \]
+  Autonomous AI adds the alternatives
+  \[
+  \Pi_1^A=z_{AI}-r,\quad
+  \Pi_2^{tA}=n(z)[z_{AI}-w(z)]-r,
+  \]
+  \[
+  \Pi_2^{bA}=n(z_{AI})[s-r]-w(s).
+  \]
+  Free entry: the chosen structure earns zero profit.
+\end{columns}
+\paperref{Accepted manuscript, Sections 3.1--3.2, equations (1)--(4).}
 \end{frame}
 
-%================= 2. EL RESULTADO ===================================
-\begin{frame}{2 \textperiodcentered{} Proposition 2.1, with all its conditions}
-  Define $x^{*}$ as the \emph{largest} maximiser of $p(x)-\gamma x$:
-  \[ x^{*} \;=\; \max\,\arg\max_{x}\;\bigl[\,p(x)-\gamma x\,\bigr] \]
+% 3
+\begin{frame}{2. Main result: capability and autonomy are distinct}
+\scriptsize
+\textbf{Maintained environment:} $z\in[0,1]$ observable; $g$ continuous and strictly positive; $x\sim U[0,1]$; $h<h_0$; at most two layers; identical compute abundant relative to human time; $z_{AI}\in[0,1)$.
+\vspace{.12cm}
 
-  \textbf{Regularity condition} (without it $x^{*}$ need not exist):
-  \[ \limsup_{x\to\infty} \frac{p(x)}{x} \;<\; \gamma \]
+\begin{columns}[T,onlytextwidth]
+\column{.49\textwidth}
+\begin{block}{Proposition 5 · autonomous AI}
+Let $B=\{z\le z_{AI}:w^*(z)>w(z)\}$ and $T=\{z\ge z_{AI}:w^*(z)>w(z)\}$. Then
+\[
+B\ne\varnothing\iff z_{AI}>\bar z_{AI},
+\quad \bar z_{AI}\in\operatorname{int}W,
+\]
+\[
+T\ne\varnothing\quad\forall z_{AI}\in[0,1).
+\]
+The top claim can fail for $h\ge h_0$ and does not include $z_{AI}=1$.
+\end{block}
 
-  \medskip
-  \textbf{Then}
-  \[ e^{*}(s,a) = \bigl(x^{*}-s-a\bigr)_{+}, \qquad
-     p^{*}(s,a) = \max\bigl\{\,p(x^{*}),\; p(s+a)\,\bigr\} \]
-
-  \medskip
-  \footnotesize\emph{Intuition.} The agent has one target level of total input;
-  he tops it up with effort, and once skill plus AI already reach it he simply
-  stops working.
+\column{.49\textwidth}
+\begin{alertblock}{Proposition 6 · non-autonomous AI}
+Unique efficient equilibrium, $r^\star=0$. If $z_{AI}\le w(0)$, AI is unused. If $z_{AI}>w(0)$, only the bottom uses it as solver. In either case:
+\begin{enumerate}\scriptsize
+  \item $Y^*>Y^\star$;
+  \item some $z>0$ has $w^\star(z)\le w(z)$, strictly if active;
+  \item near zero, $w^\star\ge\max\{w,w^*\}$, strictly if active;
+  \item near one, $w^\star\le w^*$, strictly for $z\ne1$.
+\end{enumerate}
+\end{alertblock}
+\end{columns}
+\vspace{.04cm}
+\textbf{Intuition:} autonomy changes feasible roles; \condition{capability sets both the bottom-winner and adoption thresholds}.
 \end{frame}
 
-%================= 3. LO QUE HICE ====================================
-\begin{frame}{3 \textperiodcentered{} What I did}
-  \textbf{Reproduced} Proposition 2.1 by hand --- the interior-versus-corner
-  split, with no differentiation in the proof (\texttt{hand/}).
+% 4
+\begin{frame}{3. What I did: a three-type threshold audit}
+\small
+\begin{columns}[T,onlytextwidth]
+\column{.48\textwidth}
+Let $L<M<H$, $a=z_{AI}$, and
+\[
+n_L=\frac{1}{h(1-z_L)}.
+\]
+Autonomous AI can produce alone, so $r^*=a$. Zero profit for AI solving for $L$ gives
+\[
+n_L(a-w_L^A)-a=0
+\quad\Rightarrow\quad
+\boxed{w_L^A=a[1-h(1-z_L)]}.
+\]
+Hence
+\[
+\boxed{L\text{ wins}\iff
+a>\bar a_L=\frac{w_L^0}{1-h(1-z_L)}}.
+\]
 
-  \medskip
-  \textbf{Assumptions I considered relaxing}
-  \begin{itemize}\small
-    \item \textbf{Linear cost $\to$ convex.} \emph{Dead end}: the authors already
-      do it in Appendix D (Props. D.3, D.6). Replication, not extension.
-    \item \textbf{Myopia.} A two-period agent who internalises skill dynamics.
-      Never relaxed anywhere in the paper --- this is the live one.
-    \item \textbf{Complementarity inside $p(\cdot)$} rather than as an added
-      interaction term. Harder: \S{}4.4 and \S{}5.3 partly pre-empt it.
-  \end{itemize}
-
-  \medskip
-  \textbf{Also produced} a full step-by-step tutorial of the paper and two
-  lecture decks (\texttt{extra/}).
+\column{.48\textwidth}
+Non-autonomous AI leaves compute idle, so $r^\star=0$. Conditional on adoption,
+\[
+n_L(a-w_L^N)=0\Rightarrow w_L^N=a,
+\]
+and Proposition 6 requires $a>w(0)$. Therefore
+\[
+\boxed{w_L^N-w_L^A=ah(1-z_L)>0}.
+\]
+\begin{alertblock}{What the exercise isolates}
+Capability turns adoption and bottom gains on; autonomy changes AI's outside option and who captures surplus.
+\end{alertblock}
+\end{columns}
+\paperref{Discrete accounting extension; symbolic checks in discrete\_model.py.}
 \end{frame}
 
-%================= 4. LA IA =========================================
-\begin{frame}{4 \textperiodcentered{} Where I did not believe the AI}
-  \textbf{What I asked.} ``What is the most natural extension of this model?''
-
-  \medskip
-  \textbf{What the model answered.} Relax the linear cost $c(e)=\gamma e$ to a
-  strictly convex $c(e)$ --- presented confidently as an open direction.
-
-  \medskip
-  \textbf{My verdict: \textcolor{red}{incorrect as an extension}.}
-  \begin{itemize}\small
-    \item Appendix D is titled \emph{``Extension to convex cost functions''} and
-      redoes Sections 2--4 under strictly convex cost.
-    \item So the proposal is already in the paper. I checked the appendix
-      directly rather than taking the answer at face value.
-    \item \emph{Caveat worth keeping:} Appendix D covers \S\S{}2--4 but \textbf{not}
-      \S{}5, so convex cost applied to the skill-polarisation result is genuinely
-      untouched.
-  \end{itemize}
-
-  \medskip
-  \footnotesize The step I re-derived by hand is in \texttt{hand/} --- I did not
-  trust the algebra of the first-order condition until I had written it out.
+% 5
+\begin{frame}{4. Where I did not believe the AI}
+\small
+\begin{columns}[T,onlytextwidth]
+\column{.52\textwidth}
+\IfFileExists{hand/derivation.jpg}{%
+  \includegraphics[width=\linewidth,height=.68\textheight,keepaspectratio]{hand/derivation.jpg}%
+}{\IfFileExists{hand/derivation.png}{%
+  \includegraphics[width=\linewidth,height=.68\textheight,keepaspectratio]{hand/derivation.png}%
+}{%
+  \begin{alertblock}{Insert authentic evidence}
+  Add your own photo as \texttt{hand/derivation.jpg}, then recompile. The short copy guide is in \texttt{.me/semana\_5/}.
+  \end{alertblock}
+}}
+\column{.44\textwidth}
+The tempting AI answer was:
+\begin{quote}
+“Distributional effects are driven by autonomy, not capability.”
+\end{quote}
+\begin{alertblock}{My verdict: incomplete}
+Prop. 5 requires $z_{AI}>\bar z_{AI}$ for autonomous bottom winners. Prop. 6 requires $z_{AI}>w(0)$ before non-autonomous AI is even used.
+\end{alertblock}
+Autonomy determines the role set; capability determines whether the relevant regime activates. The paper has two dimensions, not one.
+\end{columns}
+\paperref{Accepted manuscript, Propositions 5--6, pp. 25--28.}
 \end{frame}
 
 \end{document}

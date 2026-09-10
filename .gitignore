@@ -8,6 +8,8 @@
 *.synctex.gz
 *.fls
 *.fdb_latexmk
+__pycache__/
+*.pyc
 
 # macOS
 .DS_Store
@@ -16,5 +18,4 @@
 DNI*
 *_DNI*
 
-# The article itself: third-party PDF, fetch it from arXiv
-paper/*.pdf
+# The accepted manuscript is intentionally versioned for the course repository.

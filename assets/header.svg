@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">Artificial Intelligence in the Knowledge Economy</title>
+  <desc id="desc">Repository 05 banner showing a human knowledge hierarchy and autonomous and non-autonomous AI.</desc>
+  <rect width="1200" height="300" fill="#F5F6F8"/>
+  <rect width="1200" height="18" fill="#982A34"/>
+  <path d="M0 230 L690 230 L790 300 L0 300Z" fill="#0C2852"/>
+  <circle cx="940" cy="80" r="38" fill="#0C2852"/>
+  <circle cx="820" cy="200" r="31" fill="#982A34"/>
+  <circle cx="1060" cy="200" r="31" fill="#982A34"/>
+  <path d="M850 184 L918 104 M1030 184 L962 104" stroke="#0C2852" stroke-width="8" fill="none"/>
+  <path d="M820 200 H1060" stroke="#982A34" stroke-width="5" stroke-dasharray="12 12"/>
+  <text x="70" y="80" font-family="Arial, Helvetica, sans-serif" font-size="23" font-weight="700" letter-spacing="3" fill="#982A34">REPOSITORY 05 · AI ECONOMIC MODELLING</text>
+  <text x="70" y="133" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#0C2852">Artificial Intelligence in the</text>
+  <text x="70" y="181" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="700" fill="#0C2852">Knowledge Economy</text>
+  <text x="70" y="261" font-family="Arial, Helvetica, sans-serif" font-size="21" fill="#FFFFFF">CAPABILITY × AUTONOMY × ORGANIZATIONAL MATCHING</text>
+  <text x="940" y="87" text-anchor="middle" font-family="Arial" font-size="19" font-weight="700" fill="#FFFFFF">SOLVER</text>
+  <text x="820" y="207" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#FFFFFF">LOW</text>
+  <text x="1060" y="207" text-anchor="middle" font-family="Arial" font-size="16" font-weight="700" fill="#FFFFFF">AI</text>
+</svg>

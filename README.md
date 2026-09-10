@@ -1,103 +1,69 @@
-# Repository 1 — Aouad, Lykouris & Zhong (2026)
+<p align="center">
+  <img src="assets/header.svg" width="100%" alt="AI in the Knowledge Economy — Repository 05">
+</p>
 
-*Human-AI Productivity Paradoxes: Modeling the Interplay of Skill, Effort, and AI Assistance*
-[arXiv:2605.11350](https://arxiv.org/abs/2605.11350) · [cs.GT]
+<p align="center">
+  <a href="paper/ide-talamas-2025.pdf"><img alt="Paper" src="https://img.shields.io/badge/Paper-PDF-982A34?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
+  <a href="https://doi.org/10.1086/737233"><img alt="DOI" src="https://img.shields.io/badge/DOI-10.1086%2F737233-0C2852?style=for-the-badge"></a>
+  <a href="presentation.pdf"><img alt="Short deck" src="https://img.shields.io/badge/Deck-5_slides-982A34?style=for-the-badge"></a>
+  <a href="extra/presentation-long.pdf"><img alt="Extended deck" src="https://img.shields.io/badge/Extended-26_slides-0C2852?style=for-the-badge"></a>
+  <a href="extensions.md"><img alt="Audit" src="https://img.shields.io/badge/Audit-discrete_model-333333?style=for-the-badge"></a>
+</p>
 
-> **This is the worked example** for *Artificial Intelligence and Economic
-> Modeling* (UP 2026-II). It shows what a weekly repository looks like when it is
-> done well. Yours does not have to be this long — see "What is required" below.
+<p align="center">
+  <img alt="LaTeX" src="https://img.shields.io/badge/LaTeX-008080?logo=latex&logoColor=white">
+  <img alt="Beamer" src="https://img.shields.io/badge/Beamer-0C2852">
+  <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
+  <img alt="SymPy" src="https://img.shields.io/badge/SymPy-3B5526?logo=sympy&logoColor=white">
+  <a href="LICENSE.md"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-333333"></a>
+</p>
 
----
+# Artificial Intelligence in the Knowledge Economy
 
-## What question the paper answers
+**Enrique Ide and Eduard Talamàs (2025), _Journal of Political Economy_ 133(12), 3762–3800.** This is the refereed article—not the earlier 2024 working-paper version. [Published article](https://doi.org/10.1086/737233) · [accepted manuscript](https://arxiv.org/abs/2312.05481)
 
-When does AI assistance make a worker **less** productive?
+## Question and mechanism
 
-The paper picks one mechanism and pushes it: AI is a **perfectly substitutable
-input**. Skill $s$, effort $e$ and assistance $a$ enter production only through
-their sum, $x = s + e + a$. Nothing else is going on — no learning, no
-complementarity, no contracting. Everything that follows comes from that single
-modelling choice plus a linear cost of effort.
+How do AI capability and autonomy change the organization of knowledge work, total output, and the distribution of labor income? The paper places scalable AI inside a Garicano-style hierarchy. Less knowledgeable **workers** attempt problems; **solvers** handle the exceptions. An AI of knowledge $z_{AI}$ can supply advice; when autonomous, it can also pursue production opportunities on its own. The single mechanism is organizational matching: AI changes who works for whom and how the surplus of a hierarchy is divided.
 
-## The agent's problem
+Humans are risk-neutral and maximize income. A competitive firm chooses an organization and, in a two-layer human team, a solver $s$ for workers of knowledge $z$:
 
-$$\max_{e \ge 0}\; p(s+e+a) - \gamma e$$
+$$\max_{s\ge z}\; n(z)\,[s-w(z)]-w(s), \qquad n(z)=\frac{1}{h(1-z)}.$$
 
-with $p$ weakly increasing, concave and twice differentiable, $\gamma > 0$, and
-one constraint that turns out to carry the whole result: $e \ge 0$.
+With autonomous AI, the firm also compares independent production and the two automated hierarchies:
 
-## The main result, with all its conditions
+$$z_{AI}-r,\quad n(z)[z_{AI}-w(z)]-r,\quad n(z_{AI})[s-r]-w(s).$$
 
-Let $x^{*}$ be the **largest** maximiser of $p(x) - \gamma x$:
+Competitive entry drives the chosen activity's profit to zero. The model assumes observable human knowledge $z\in[0,1]$, a continuous strictly positive density, problem difficulty uniform on $[0,1]$, help cost $h\in(0,1)$, at most two layers, and compute abundant relative to human time. Sections 5–6 additionally maintain $h<h_0$ and $z_{AI}<1$.
 
-$$x^{*} = \max \arg\max_{x} \left[\, p(x) - \gamma x \,\right]$$
+## Main result—and the condition the slogan misses
 
-This requires a **regularity condition**, without which $x^{*}$ need not exist:
+Let $w$ be the pre-AI wage, $w^*$ the autonomous-AI wage, and $w^\star$ the non-autonomous-AI wage. Define bottom and top winners under autonomous AI by $B=\{z\le z_{AI}:w^*(z)>w(z)\}$ and $T=\{z\ge z_{AI}:w^*(z)>w(z)\}$.
 
-$$\limsup_{x \to \infty} \frac{p(x)}{x} < \gamma$$
+**Proposition 5.** Under the maintained assumptions above,
 
-**Proposition 2.1.** Under those conditions,
+$$B\ne\varnothing \iff z_{AI}>\bar z_{AI},\quad \bar z_{AI}\in\operatorname{int}W; \qquad T\ne\varnothing\quad\forall z_{AI}\in[0,1).$$
 
-$$e^{*}(s,a) = \left(x^{*} - s - a\right)_{+}, \qquad
-  p^{*}(s,a) = \max\left\{ p(x^{*}),\, p(s+a) \right\}$$
+Thus autonomous AI always produces some winners at the top, but it produces winners at the bottom only when it is capable enough. The top result relies on $h<h_0$; the paper notes it may fail when $h\ge h_0$.
 
-*Intuition in one sentence:* the agent has a single target level of total input,
-tops it up with effort, and once skill plus AI already reach it he stops working.
+**Proposition 6.** If AI is non-autonomous, the equilibrium is unique and efficient and $r^\star=0$. If $z_{AI}\le w(0)$, AI is unused and wages and occupations remain pre-AI. If $z_{AI}>w(0)$, only the least knowledgeable use AI as solver. In either case, autonomous AI yields strictly more output; non-autonomous AI creates some weak losers; a neighborhood of the bottom weakly prefers non-autonomous AI to both alternatives (strictly if $z_{AI}>w(0)$); and a neighborhood of the top prefers autonomous AI (strictly except at $z=1$).
 
-Two things worth noticing about the proof. It is a **case split** — interior
-versus corner — and contains **no differentiation at all**; and the largest-argmax
-tie-break is not decoration, it is what makes $e^{*}$ well defined when
-$p(x)-\gamma x$ has a flat maximum.
+> **Verdict.** “Distribution is driven by autonomy, not capability” is incomplete. Autonomy determines which roles AI may occupy, but capability determines whether autonomous AI creates bottom winners ($z_{AI}>\bar z_{AI}$) and whether non-autonomous AI is used at all ($z_{AI}>w(0)$).
 
-## Sections 3–5: stated, not derived
+## Repository map
 
-The three headline results — the deskilling paradox, the unreliability paradox
-and skill polarisation — use machinery well beyond Section 2: a continuous-time
-birth–death Markov chain and its steady state, Arrow–Pratt risk aversion applied
-to a *production* function with IARA/DARA driving the sign, and Bayesian updating
-over a binary signal. They are worth understanding; they are not worth trying to
-reproduce in a week. See `extra/tutorial-alz-completo.pdf` for the full walk.
+```text
+.
+├── assets/                 # banner and shared Beamer style
+├── extra/
+│   ├── figures/            # reproducible discrete-model figure
+│   └── presentation-long.* # 26-frame oral-exam deck
+├── hand/                   # add your own handwritten photo here
+├── paper/                  # accepted manuscript and provenance
+├── presentation.tex/.pdf  # required five-frame deck
+├── discrete_model.py       # symbolic and numerical checks
+├── extensions.md           # derivation, caveats, limiting cases
+└── prompts.md              # raw AI interaction record
+```
 
----
-
-## What is in this repository
-
-| File | What it is |
-|---|---|
-| `README.md` | This page |
-| `prompts.md` | The full LLM conversation, unedited |
-| `extensions.md` | Which assumptions could be relaxed, and which are dead ends |
-| `hand/` | The derivation of Proposition 2.1, written out by hand |
-| `presentation.tex` / `.pdf` | The 5-minute Beamer deck |
-| `paper/` | The article itself |
-| `extra/` | Above the floor: a full tutorial of the paper and two lecture decks |
-
-## What is required
-
-Only four things. The rest of this repository is above the floor.
-
-1. **`README.md`** — one page: the question, the agent's problem, the main result
-   **with all its conditions**.
-2. **`prompts.md`** — your prompts and the answers, **raw**. Do not tidy them up:
-   the value is in seeing where the model went wrong.
-3. **`hand/`** — at least one photograph of something you derived by hand. Not the
-   whole paper: the one step you did not believe until you did it yourself.
-4. **`presentation.tex` / `.pdf`** — the 5-minute deck, source and compiled.
-
-Deadline is **Tuesday 22:00**, work merged into `main` through a pull request,
-and the repository URL posted as a comment on that week's issue.
-
-## About `hand/`
-
-`hand/prop-2-1-derivacion-a-mano.pdf` is three phone photos of a notebook page.
-That is exactly the standard: crooked, with crossings-out, no transcription. What
-it shows is the first-order condition and the interior-versus-corner split written
-out step by step — the part I did not want to take on trust.
-
-## About the LLM conversation
-
-`prompts.md` is the export of the session that produced the tutorial in `extra/`.
-Read it for what it gets wrong as much as for what it gets right. The episode
-worth studying is on slide 4 of the presentation: asked for "the most natural
-extension", the model confidently proposed relaxing the linear cost — which the
-authors had already done in Appendix D. It took opening the appendix to find out.
+Run `python discrete_model.py` to reproduce the checks and figure, and compile the decks with LuaLaTeX. **Before submission, replace the placeholder in `hand/` with a real photo of your own derivation.**

@@ -1,0 +1,518 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usepackage{fontspec}
+\usepackage{assets/ide-beamer}
+\hypersetup{colorlinks=true,urlcolor=IDERed}
+
+\newcommand{\wpre}{w}
+\newcommand{\waut}{w^*}
+\newcommand{\wnon}{w^\star}
+
+\begin{document}
+
+% 1
+\begin{frame}[plain]
+\vspace{.42cm}
+{\color{IDERed}\large\bfseries EXTENDED ANALYSIS · REPOSITORY 05}\par\vspace{.28cm}
+{\usebeamerfont{title}\color{IDENavy}AI in the Knowledge Economy}\par\vspace{.2cm}
+{\large Capability, autonomy, and who captures the surplus}\par\vspace{.48cm}
+\begin{tikzpicture}
+\node[circle,fill=IDENavy,text=white,minimum size=1.25cm,font=\bfseries] (s) at (5.8,1.25) {solver};
+\node[circle,fill=IDERed,text=white,minimum size=1.05cm,font=\bfseries] (l) at (3.6,0) {low};
+\node[circle,fill=IDERed,text=white,minimum size=1.05cm,font=\bfseries] (a) at (8,0) {AI};
+\draw[-{Latex},thick,IDENavy] (l)--(s); \draw[-{Latex},thick,IDENavy] (a)--(s);
+\end{tikzpicture}
+\vfill
+John Barraza · Universidad del Pacífico\hfill\href{\repoURL}{github.com/johnbarraza/ai-05-ide}
+\end{frame}
+
+% 2
+\begin{frame}{Roadmap and contribution}
+\small
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\begin{block}{Paper}
+\textbf{Organization:} workers, solvers, and scalable AI.\\[.15cm]
+\textbf{Outcomes:} matching, wages, output.\\[.15cm]
+\textbf{Comparison:} autonomous versus co-pilot-only AI.
+\end{block}
+\column{.49\textwidth}
+\begin{alertblock}{My audit}
+I recover the exact conditions in Propositions 5–6, then use a three-type zero-profit calculation to show why capability and autonomy are separate margins.
+\end{alertblock}
+\end{columns}
+\vspace{.22cm}
+\centering
+\tagpill{Claim tested}\quad “Distribution is driven by autonomy, not capability.”
+\end{frame}
+
+% 3
+\begin{frame}{The economic question}
+\small
+\begin{block}{Question}
+How do AI capability and autonomy reorganize knowledge work, total output, and the distribution of labor income?
+\end{block}
+\vspace{.25cm}
+\begin{columns}[T,onlytextwidth]
+\column{.31\textwidth}\bluepill{Capability}\\[.18cm]How difficult a problem AI can solve: $z_{AI}$.
+\column{.31\textwidth}\bluepill{Autonomy}\\[.18cm]Whether AI can pursue opportunities, not merely advise.
+\column{.31\textwidth}\bluepill{Organization}\\[.18cm]Who works, who solves, and each solver's span of control.
+\end{columns}
+\vfill
+The paper's contribution is the interaction of all three—not a one-dimensional treatment taxonomy.
+\end{frame}
+
+% 4
+\begin{frame}{Primitives}
+\small
+\begin{columns}[T,onlytextwidth]
+\column{.48\textwidth}
+\begin{itemize}
+\item Human knowledge $z\in[0,1]$, perfectly observable.
+\item Distribution $G$ has continuous, strictly positive density $g$.
+\item Each person owns one unit of time and maximizes income.
+\item Problem difficulty $x\sim U[0,1]$; success iff $z\ge x$.
+\end{itemize}
+\column{.48\textwidth}
+\begin{itemize}
+\item Asking a solver consumes $h\in(0,1)$ units of solver time.
+\item Competitive, zero-fixed-cost firms; at most two layers.
+\item AI knowledge $z_{AI}\in[0,1)$; one unit of compute per agent.
+\item Compute is abundant relative to human time.
+\end{itemize}
+\end{columns}
+\vfill
+\begin{alertblock}{Maintained later}
+The distributional section restricts attention to $h<h_0$: no independent human producers pre-AI.
+\end{alertblock}
+\end{frame}
+
+% 5
+\begin{frame}{The hierarchy technology}
+\small
+A worker with knowledge $z$ solves fraction $z$ of problems; fraction $1-z$ reaches the solver. One request costs $h$, so a solver can support
+\[
+\boxed{n(z)=\frac{1}{h(1-z)}}
+\]
+identical workers.
+\begin{center}
+\begin{tikzpicture}[node distance=1.25cm]
+\node[draw=IDENavy,very thick,rounded corners,fill=IDEBlueWash,minimum width=2.1cm,minimum height=.7cm] (s) {solver $s$};
+\foreach \x/\lab in {-3/$z_1$,-1/$z_2$,1/$\cdots$,3/$z_n$}{
+\node[draw=IDERed,rounded corners,fill=IDERedWash,minimum width=1.25cm] (w\x) at (\x,-1.45) {\lab};
+\draw[-{Latex},IDERed] (w\x)--(s);}
+\end{tikzpicture}
+\end{center}
+Lower $h$ or higher worker knowledge increases span of control.
+\end{frame}
+
+% 6
+\begin{frame}{The firm's problem}
+\small
+For a human hierarchy, a firm hiring workers $z$ chooses a solver $s\ge z$:
+\[
+\max_{s\ge z}\ \Pi^{nA}_2(s,z)=n(z)[s-w(z)]-w(s).
+\]
+With autonomous AI it also compares
+\[
+\Pi_1^A=z_{AI}-r,
+\quad \Pi_2^{tA}(z)=n(z)[z_{AI}-w(z)]-r,
+\]
+\[
+\Pi_2^{bA}(s)=n(z_{AI})[s-r]-w(s).
+\]
+\begin{block}{Equilibrium discipline}
+Firms choose the profit-maximizing structure, free entry sets active profits to zero, labor markets clear, and compute earns rent $r$.
+\end{block}
+\end{frame}
+
+% 7
+\begin{frame}{Pre-AI benchmark}
+\small
+\begin{columns}[T,onlytextwidth]
+\column{.54\textwidth}
+\begin{itemize}
+\item Occupational stratification: $W\preceq I\preceq S$.
+\item Positive assortative matching: $m:W\to S$ increases.
+\item $W$ and $S$ are nonempty; $I$ exists iff $h>h_0$.
+\item Wage $w(z)$ is continuous, increasing, and convex.
+\end{itemize}
+\column{.42\textwidth}
+\begin{tikzpicture}[x=4.1cm,y=1cm]
+\draw[->,thick] (0,0)--(1.05,0) node[right] {$z$};
+\draw[IDERed,line width=5pt] (0,0)--(.48,0) node[midway,below=.15cm] {$W$};
+\draw[IDENavy,line width=5pt] (.48,0)--(1,0) node[midway,below=.15cm] {$S$};
+\draw[-{Latex},bend left=35,IDEGraphite] (.18,.1) to (.68,.1);
+\draw[-{Latex},bend left=35,IDEGraphite] (.38,.1) to (.92,.1);
+\end{tikzpicture}
+\end{columns}
+\vfill
+For $h<h_0$, everyone belongs to a two-layer organization.
+\end{frame}
+
+% 8
+\begin{frame}{What counts as autonomous AI?}
+\small
+One unit of compute creates one agent of knowledge $z_{AI}$, a perfect substitute for a same-knowledge human.
+\vspace{.3cm}
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\begin{block}{Autonomous}
+AI may act as:
+\begin{itemize}
+\item independent producer;
+\item worker/co-worker;
+\item solver/co-pilot.
+\end{itemize}
+\end{block}
+\column{.47\textwidth}
+\begin{alertblock}{Non-autonomous}
+AI may act only as solver/co-pilot. It cannot pursue production opportunities itself.
+\end{alertblock}
+\end{columns}
+\vfill
+Autonomy is a constraint on roles; capability is the location $z_{AI}$ on the knowledge axis.
+\end{frame}
+
+% 9
+\begin{frame}{Why abundant compute fixes the autonomous rent}
+\small
+Some autonomous AI must produce independently when compute is abundant relative to human time. Zero profit then implies
+\[
+\Pi_1^A=z_{AI}-r^*=0
+\quad\Longrightarrow\quad
+\boxed{r^*=z_{AI}}.
+\]
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\begin{block}{Opportunity cost}
+An AI agent used as solver forgoes independent output $z_{AI}$.
+\end{block}
+\column{.47\textwidth}
+\begin{alertblock}{Distribution}
+That outside option affects how much surplus the assisted human workers can retain.
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% 10
+\begin{frame}{Autonomous AI reorganizes both sides}
+\small
+Occupational stratification places workers weakly below AI and solvers weakly above it:
+\[
+W^*\preceq\{z_{AI}\}\preceq S^*.
+\]
+\begin{center}
+\begin{tikzpicture}[x=9cm,y=1cm]
+\draw[->,thick] (0,0)--(1.05,0) node[right] {$z$};
+\draw[IDERed,line width=6pt] (0,0)--(.43,0) node[midway,below=.16cm] {human workers};
+\draw[IDENavy,line width=6pt] (.63,0)--(1,0) node[midway,below=.16cm] {human solvers};
+\draw[fill=white,draw=IDEGraphite,very thick] (.53,0) circle (.06) node[above=.18cm] {$z_{AI}$};
+\draw[-{Latex},IDERed,thick] (.2,.15) to[bend left=25] (.53,.15);
+\draw[-{Latex},IDENavy,thick] (.53,.15) to[bend left=25] (.87,.15);
+\end{tikzpicture}
+\end{center}
+AI can displace a match and also change the division of its surplus.
+\end{frame}
+
+% 11
+\begin{frame}{Two wage channels}
+\small
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\begin{alertblock}{Match effect}
+AI changes the knowledge of the partner assigned to a human. At both extremes, the relevant rematching can depress wages.
+\end{alertblock}
+\column{.47\textwidth}
+\begin{block}{Share effect}
+AI changes the partner's price and therefore the human's share of team surplus. This effect can raise wages.
+\end{block}
+\end{columns}
+\vspace{.3cm}
+\centering
+\Large $\Delta w(z)=$ \textcolor{IDERed}{match effect} $+$ \textcolor{IDENavy}{share effect}
+\vfill
+At the bottom, the sign depends on AI capability. At the top, low communication cost makes the positive share effect dominate.
+\end{frame}
+
+% 12
+\begin{frame}{Proposition 5: define the objects first}
+\small
+Compare the autonomous wage $\waut$ with the pre-AI wage $\wpre$:
+\[
+B\equiv\{z\in[0,z_{AI}]:\waut(z)>\wpre(z)\},
+\]
+\[
+T\equiv\{z\in[z_{AI},1]:\waut(z)>\wpre(z)\}.
+\]
+The proof shows these sets have cutoff form:
+\[
+B=[0,z_b),\qquad T=(z_t,1]
+\]
+for some $z_b\ge0$ and $z_t\le1$.
+\begin{block}{Interpretation}
+If autonomous AI produces wage winners, they lie at the extremes of the knowledge distribution—not necessarily at both extremes.
+\end{block}
+\end{frame}
+
+% 13
+\begin{frame}{Proposition 5: exact statement and conditions}
+\small
+\begin{block}{Bottom}
+There are winners at the bottom iff AI is good enough:
+\[
+\boxed{B\ne\varnothing\iff z_{AI}>\bar z_{AI}},
+\qquad \bar z_{AI}\in\operatorname{int}W.
+\]
+\end{block}
+\begin{alertblock}{Top}
+There are winners at the top:
+\[
+\boxed{T\ne\varnothing\quad\forall z_{AI}\in[0,1)}.
+\]
+\end{alertblock}
+Maintained: continuous positive density, two layers, abundant compute, $h<h_0$, and $z_{AI}<1$. The paper notes the top claim may fail for $h\ge h_0$.
+\paperref{Proposition 5 and footnote 19, accepted manuscript, pp. 25--26.}
+\end{frame}
+
+% 14
+\begin{frame}{Why bottom winners require capability}
+\small
+For a basic AI, $z_{AI}\in\operatorname{int}W$:
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\begin{alertblock}{Negative match effect}
+The least knowledgeable lose access to their former, more knowledgeable human solver.
+\end{alertblock}
+\column{.47\textwidth}
+\begin{block}{Positive share effect}
+AI can be cheaper than the displaced human solver, increasing the workers' share.
+\end{block}
+\end{columns}
+\vspace{.3cm}
+The positive effect dominates only above $\bar z_{AI}$. When $z_{AI}\in\operatorname{int}S$, both match and share effects at the bottom are positive.
+\vfill
+\centering\tagpill{Key}\quad The existence of bottom winners is explicitly a capability result.
+\end{frame}
+
+% 15
+\begin{frame}{Why the top result is conditional}
+\small
+The most knowledgeable also face a negative match effect and positive share effect. Under $h<h_0$, team size is large, so a small fall in worker cost is amplified across many workers:
+\[
+n(z)=\frac{1}{h(1-z)}.
+\]
+\begin{alertblock}{Do not overstate Proposition 5}
+\begin{itemize}
+\item When $h\ge h_0$, the paper says top humans can sometimes lose.
+\item The theorem uses $z_{AI}<1$; at $z_{AI}=1$, the most knowledgeable necessarily lose.
+\end{itemize}
+\end{alertblock}
+“There are always winners at the top” means always inside the maintained parameter region.
+\end{frame}
+
+% 16
+\begin{frame}{Non-autonomous AI changes one constraint}
+\small
+AI can solve but cannot pursue a production opportunity. Therefore:
+\[
+S_a=\varnothing,\qquad \mu_w=0,
+\]
+and some compute remains idle. With abundant compute,
+\[
+\boxed{r^\star=0}.
+\]
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}\begin{block}{Same capability}Knowledge remains $z_{AI}$.\end{block}
+\column{.47\textwidth}\begin{alertblock}{Different outside option}A co-pilot cannot earn $z_{AI}$ independently.\end{alertblock}
+\end{columns}
+This zero rent is the source of a stronger share effect for low-skilled users.
+\end{frame}
+
+% 17
+\begin{frame}{Proposition 6: equilibrium and adoption}
+\small
+There is a unique efficient equilibrium that maximizes labor income, with $r^\star=0$.
+\vspace{.2cm}
+\begin{columns}[T,onlytextwidth]
+\column{.47\textwidth}
+\begin{alertblock}{$z_{AI}\le w(0)$}
+AI is not used: $W_a^\star=\varnothing$. Human occupations and wages coincide with pre-AI outcomes.
+\end{alertblock}
+\column{.47\textwidth}
+\begin{block}{$z_{AI}>w(0)$}
+Only the least knowledgeable use AI as solver:
+\[
+W_a^\star\preceq(W_p^\star\cup I^\star\cup S_p^\star),
+\]
+with all sets nonempty except possibly $I^\star$.
+\end{block}
+\end{columns}
+\vfill
+The adoption cutoff $z_{AI}>w(0)$ is another capability condition.
+\end{frame}
+
+% 18
+\begin{frame}{Proposition 6.1: output ranking}
+\small
+Holding compute availability identical and abundant, and maintaining at most two layers,
+\[
+\boxed{Y^{*}>Y^{\star}}.
+\]
+\begin{center}
+\begin{tikzpicture}
+\draw[fill=IDEBlueWash,draw=IDENavy,thick] (0,0) rectangle (5.2,1.1);
+\node[align=center] at (2.6,.55) {autonomous: advice\\+ independent production};
+\draw[fill=IDERedWash,draw=IDERed,thick] (6,0) rectangle (11.2,1.1);
+\node[align=center] at (8.6,.55) {non-autonomous: advice only;\\some compute idle};
+\draw[-{Latex},very thick,IDENavy] (5.35,.55)--(5.85,.55);
+\end{tikzpicture}
+\end{center}
+This is an aggregate output comparison, not a Pareto ranking of human wages.
+\end{frame}
+
+% 19
+\begin{frame}{Proposition 6.2: non-autonomy creates losers}
+\small
+In all cases,
+\[
+\exists z\in(0,1]\quad \wnon(z)\le\wpre(z),
+\]
+with strict inequality if $z_{AI}>w(0)$.
+\begin{alertblock}{Logical detail}
+When $z_{AI}\le w(0)$, AI is unused and everyone is weakly unchanged. When it is active, some humans strictly lose.
+\end{alertblock}
+Efficiency and maximum labor income do not imply every type gains; organizational rematching redistributes labor income.
+\end{frame}
+
+% 20
+\begin{frame}{Proposition 6.3: the bottom prefers non-autonomy}
+\small
+There exists $\varepsilon>0$ such that for every $z\in[0,\varepsilon)$,
+\[
+\boxed{\wnon(z)\ge\max\{\wpre(z),\waut(z)\}},
+\]
+strictly if $z_{AI}>w(0)$.
+\begin{block}{Mechanism}
+Co-pilot-only AI does not compete with low types for production and has zero compute rent. Low-skilled workers capture more of the automated team's surplus.
+\end{block}
+But the strict gain still switches on only when capability crosses $w(0)$.
+\end{frame}
+
+% 21
+\begin{frame}{Proposition 6.4: the top prefers autonomy}
+\small
+There exists $\varepsilon>0$ such that for every $z\in(1-\varepsilon,1]$,
+\[
+\boxed{\wnon(z)\le\waut(z)},
+\]
+strictly for $z\ne1$.
+\begin{block}{Mechanism}
+The most knowledgeable benefit when autonomous AI can work below them and expand their span of control. Co-pilot-only AI removes that channel.
+\end{block}
+Thus output and top wages favor autonomy, while bottom wages can favor non-autonomy.
+\end{frame}
+
+% 22
+\begin{frame}{The correct two-dimensional taxonomy}
+\small
+\centering
+\begin{tabularx}{.96\textwidth}{>{\bfseries}lXX}
+\toprule
+& Low capability & High capability \\
+\midrule
+Autonomous & Top winners; bottom need not win & Bottom winners once $z_{AI}>\bar z_{AI}$; top winners under $h<h_0$ \\
+\addlinespace
+Non-autonomous & Unused if $z_{AI}\le w(0)$ & Active solver for the bottom; bottom strictly prefers it \\
+\bottomrule
+\end{tabularx}
+\vspace{.4cm}
+\begin{alertblock}{Verdict on the slogan}
+Autonomy determines feasible roles and surplus channels. Capability determines which cells are actually reached.
+\end{alertblock}
+\end{frame}
+
+% 23
+\begin{frame}{Three-type hand derivation}
+\small
+Let $L<M<H$, $a=z_{AI}$, $n_L=[h(1-z_L)]^{-1}$, and pre-AI wage $w_L^0$.
+\begin{columns}[T,onlytextwidth]
+\column{.48\textwidth}
+\begin{block}{Autonomous: $r^*=a$}
+\[
+n_L(a-w_L^A)-a=0
+\]
+\[
+w_L^A=a[1-h(1-z_L)].
+\]
+Thus $L$ wins iff
+\[
+a>\bar a_L=\frac{w_L^0}{1-h(1-z_L)}.
+\]
+\end{block}
+\column{.48\textwidth}
+\begin{alertblock}{Non-autonomous: $r^\star=0$}
+Conditional on $a>w(0)$,
+\[
+n_L(a-w_L^N)=0\Rightarrow w_L^N=a,
+\]
+so
+\[
+w_L^N-w_L^A=ah(1-z_L)>0.
+\]
+\end{alertblock}
+\end{columns}
+\end{frame}
+
+% 24
+\begin{frame}{Reproducible numerical check}
+\begin{columns}[T,onlytextwidth]
+\column{.68\textwidth}
+\includegraphics[width=\linewidth]{extra/figures/discrete-bottom-gains.pdf}
+\column{.29\textwidth}
+\small
+For $(z_L,h,w_L^0)=(.10,.40,.25)$:
+\[
+w_L^A=.64a,
+\quad \bar a_L=.390625.
+\]
+At $a=.30$, non-autonomous AI is active but autonomous AI does not make $L$ a winner.
+\vspace{.2cm}
+At $a=.60$, both do; $L$ still prefers non-autonomy.
+\end{columns}
+\paperref{Generated by discrete\_model.py; equations verified symbolically with SymPy.}
+\end{frame}
+
+% 25
+\begin{frame}{Where I did not believe the AI}
+\small
+\begin{alertblock}{AI gloss}
+“Distributional effects are driven by autonomy, not capability.”
+\end{alertblock}
+\begin{block}{Audit verdict}
+Incomplete. Proposition 5 gives $z_{AI}>\bar z_{AI}$ for autonomous bottom winners. Proposition 6 gives $z_{AI}>w(0)$ for non-autonomous adoption and strict bottom gains.
+\end{block}
+\begin{itemize}
+\item “Top always wins” additionally lives inside $h<h_0$ and $z_{AI}<1$.
+\item $Y^*>Y^\star$ assumes identical abundant compute and two layers.
+\item The three-type calculation is an accounting extension, not the full market-clearing proof.
+\end{itemize}
+\end{frame}
+
+% 26
+\begin{frame}{Takeaways}
+\small
+\begin{enumerate}
+\item The model's mechanism is organizational matching and surplus division inside knowledge hierarchies.
+\item Autonomous AI produces top winners under $h<h_0$, but bottom winners require $z_{AI}>\bar z_{AI}$.
+\item Non-autonomous AI helps the bottom most only weakly when inactive and strictly when $z_{AI}>w(0)$.
+\item Autonomy raises total output by letting compute pursue opportunities; non-autonomy can transfer more surplus to low-skilled users.
+\end{enumerate}
+\vspace{.35cm}
+\begin{alertblock}{One-sentence answer}
+Capability decides whether AI is good enough to activate the distributive channel; autonomy decides which channel operates and who captures it.
+\end{alertblock}
+\vfill
+\centering\href{\repoURL}{github.com/johnbarraza/ai-05-ide}
+\end{frame}
+
+\end{document}
