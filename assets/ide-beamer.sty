@@ -1,0 +1,58 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{ide-beamer}[2026/09/10 Week 5 Beamer style]
+\RequirePackage{fontspec}
+\IfFontExistsTF{Avenir Next}{\setsansfont{Avenir Next}}{%
+  \IfFontExistsTF{TeX Gyre Heros}{\setsansfont{TeX Gyre Heros}}{\setsansfont{Arial}}}
+\RequirePackage{amsmath,amssymb,mathtools}
+\RequirePackage{booktabs,tabularx}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\RequirePackage{hyperref}
+
+\definecolor{IDENavy}{HTML}{0C2852}
+\definecolor{IDERed}{HTML}{982A34}
+\definecolor{IDEGraphite}{HTML}{333333}
+\definecolor{IDERedWash}{HTML}{F4E8EA}
+\definecolor{IDERedPale}{HTML}{F9F5F5}
+\definecolor{IDEBlueWash}{HTML}{EBEEF1}
+\definecolor{IDEBluePale}{HTML}{F5F6F8}
+
+\setbeamercolor{normal text}{fg=IDEGraphite,bg=white}
+\setbeamercolor{structure}{fg=IDENavy}
+\setbeamercolor{frametitle}{fg=white,bg=IDENavy}
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamerfont{title}{series=\bfseries,size=\LARGE}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamertemplate{navigation symbols}{}
+\setbeamersize{text margin left=0.62cm,text margin right=0.62cm}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip\begin{beamercolorbox}[wd=\paperwidth,ht=.72cm,dp=.21cm,leftskip=.62cm]{frametitle}%
+  \insertframetitle
+  \end{beamercolorbox}%
+  \vspace{.05cm}\hspace{.62cm}{\color{IDERed}\rule{2.1cm}{2.1pt}}\vspace{.05cm}}
+\setbeamertemplate{footline}{%
+  \leavevmode\hbox{%
+  \begin{beamercolorbox}[wd=.84\paperwidth,ht=.27cm,dp=.14cm,leftskip=.62cm]{author in head/foot}%
+    \color{IDEGraphite}\scriptsize Ide \& Talamàs (2025) · AI Economic Modelling
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.16\paperwidth,ht=.27cm,dp=.14cm,rightskip=.62cm plus1fil]{page number in head/foot}%
+    \color{IDENavy}\scriptsize\hfill\insertframenumber/\inserttotalframenumber
+  \end{beamercolorbox}}
+}
+\setbeamertemplate{itemize item}{\color{IDERed}\raise.18ex\hbox{\scriptsize$\blacksquare$}}
+\setbeamertemplate{itemize subitem}{\color{IDENavy}\raise.18ex\hbox{\tiny$\blacktriangleright$}}
+\setlength{\leftmargini}{1.15em}
+\setlength{\leftmarginii}{1.05em}
+
+\setbeamercolor{block title}{fg=white,bg=IDENavy}
+\setbeamercolor{block body}{fg=IDEGraphite,bg=IDEBluePale}
+\setbeamercolor{block title alerted}{fg=white,bg=IDERed}
+\setbeamercolor{block body alerted}{fg=IDEGraphite,bg=IDERedPale}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+
+\newcommand{\tagpill}[1]{\tikz[baseline=(n.base)]\node[fill=IDERed,text=white,rounded corners=1.5pt,inner xsep=5pt,inner ysep=2.2pt,font=\scriptsize\bfseries] (n) {#1};}
+\newcommand{\bluepill}[1]{\tikz[baseline=(n.base)]\node[fill=IDENavy,text=white,rounded corners=1.5pt,inner xsep=5pt,inner ysep=2.2pt,font=\scriptsize\bfseries] (n) {#1};}
+\newcommand{\paperref}[1]{\vfill{\color{IDEGraphite!75}\tiny Source: #1}}
+\newcommand{\condition}[1]{\textcolor{IDERed}{\bfseries #1}}
+\newcommand{\repoURL}{https://github.com/johnbarraza/ai-05-ide}

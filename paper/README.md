@@ -1,14 +1,11 @@
-# The paper
+# Paper source
 
-Not committed — it is a third-party PDF and the repository should stay light.
+`ide-talamas-2025.pdf` is the 39-page accepted manuscript of:
 
-**Aouad, A., Lykouris, T., & Zhong, H. (2026).** *Human-AI Productivity Paradoxes:
-Modeling the Interplay of Skill, Effort, and AI Assistance.*
+> Enrique Ide and Eduard Talamàs (2025), “Artificial Intelligence in the Knowledge Economy,” *Journal of Political Economy* 133(12), 3762–3800.
 
-- https://arxiv.org/abs/2605.11350
-- Direct PDF: https://arxiv.org/pdf/2605.11350
+- DOI: <https://doi.org/10.1086/737233>
+- Open record: <https://arxiv.org/abs/2312.05481>
+- Local file checked: arXiv v12, revised 17 May 2025
 
-```bash
-curl -L -o paper/aouad-lykouris-zhong-2026-productivity-paradoxes.pdf \
-  https://arxiv.org/pdf/2605.11350
-```
+The spelling **Talamàs** and publication year **2025** are intentional.
