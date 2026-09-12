@@ -72,3 +72,13 @@ lualatex -output-directory=extra extra/presentation-long.tex
 ```
 
 The script fails loudly if the symbolic threshold, wage wedge, or selected numerical cases are inconsistent.
+
+## 6. Lean verification
+
+The `lean/` export proves three statements about this discrete extension:
+
+1. `discreteAutonomousZeroProfit`: the proposed autonomous wage satisfies the zero-profit equation;
+2. `discreteBottomWinnerThreshold`: the low type wins if and only if capability exceeds the discrete threshold;
+3. `discreteNonAutonomousWedge`: the non-autonomous/autonomous wage difference is exactly $ah(1-z_L)$.
+
+The EconCSLib target `IT25AIKnowledgeEconomy` compiled under Lean `v4.30.0-rc2` with no `sorry` or locally declared axioms. `AxiomAudit.lean` reports only `propext`, `Classical.choice`, and `Quot.sound`, the standard foundations inherited through mathlib. This is deliberately a proof of the finite accounting extension—not a claim that Propositions 5 and 6's full continuum equilibrium has been formalized.
