@@ -55,3 +55,19 @@ The entries below preserve the prompts and relevant answers used to build the re
 ## Verification note
 
 The final wording was reconciled with the May 17, 2025 accepted-manuscript version, especially pp. 25–28 (Propositions 5–6), and the symbolic identities were checked by `discrete_model.py`.
+
+---
+
+## Prompt 5 — required formal verification
+
+### User
+
+> SI PIDEN LEAN! ME DIJO EL PROFSOR
+
+### Assistant
+
+> Añadiré una formalización Lean con alcance explícito: demostraré las tres identidades del ejercicio discreto (beneficio cero, umbral de ganadores de abajo y brecha salarial por autonomía), sin afirmar que eso formaliza el equilibrio continuo completo de las Proposiciones 5 y 6. También ejecutaré una auditoría de axiomas y compilaré el target dentro de EconCSLib.
+
+### Result
+
+The target `IT25AIKnowledgeEconomy` compiled successfully under Lean `v4.30.0-rc2`. Its three public endpoints contain no `sorry`; the explicit axiom audit lists only standard Lean/mathlib foundations.

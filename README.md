@@ -8,6 +8,7 @@
   <a href="presentation.pdf"><img alt="Short deck" src="https://img.shields.io/badge/Deck-5_slides-982A34?style=for-the-badge"></a>
   <a href="extra/presentation-long.pdf"><img alt="Extended deck" src="https://img.shields.io/badge/Extended-26_slides-0C2852?style=for-the-badge"></a>
   <a href="extensions.md"><img alt="Audit" src="https://img.shields.io/badge/Audit-discrete_model-333333?style=for-the-badge"></a>
+  <a href="lean/README.md"><img alt="Lean audit" src="https://img.shields.io/badge/Lean-3_proofs-6B4FBB?style=for-the-badge&logo=lean&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -15,6 +16,7 @@
   <img alt="Beamer" src="https://img.shields.io/badge/Beamer-0C2852">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
   <img alt="SymPy" src="https://img.shields.io/badge/SymPy-3B5526?logo=sympy&logoColor=white">
+  <img alt="Lean 4" src="https://img.shields.io/badge/Lean-4.30.0--rc2-6B4FBB">
   <a href="LICENSE.md"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-333333"></a>
 </p>
 
@@ -59,6 +61,7 @@ Thus autonomous AI always produces some winners at the top, but it produces winn
 │   ├── figures/            # reproducible discrete-model figure
 │   └── presentation-long.* # 26-frame oral-exam deck
 ├── hand/                   # add your own handwritten photo here
+├── lean/                   # Lean 4 proof interfaces and axiom audit
 ├── paper/                  # accepted manuscript and provenance
 ├── presentation.tex/.pdf  # required five-frame deck
 ├── discrete_model.py       # symbolic and numerical checks
@@ -66,4 +69,4 @@ Thus autonomous AI always produces some winners at the top, but it produces winn
 └── prompts.md              # raw AI interaction record
 ```
 
-Run `python discrete_model.py` to reproduce the checks and figure, and compile the decks with LuaLaTeX. **Before submission, replace the placeholder in `hand/` with a real photo of your own derivation.**
+Run `python discrete_model.py` to reproduce the checks and figure, and compile the decks with LuaLaTeX. The matching Lean target `IT25AIKnowledgeEconomy` builds successfully in EconCSLib: all three public proof endpoints contain no `sorry`, and `lean/AxiomAudit.lean` reports only Lean/mathlib's standard foundations. See [`lean/README.md`](lean/README.md) for the exact scope. **Before submission, replace the placeholder in `hand/` with a real photo of your own derivation.**
