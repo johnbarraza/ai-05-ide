@@ -28,19 +28,7 @@ The entries below preserve the prompts and relevant answers used to build the re
 
 ---
 
-## Prompt 3 — discrete derivation
-
-### User
-
-> Give me a short three-type derivation that I can reproduce by hand. Do not pretend it is the full continuum equilibrium.
-
-### Assistant
-
-> Let `L<M<H` and `n_L=1/[h(1-z_L)]`. For an autonomous AI solver, abundant compute makes its outside option `r*=a`. Zero profit gives `n_L(a-w_L^A)-a=0`, hence `w_L^A=a[1-h(1-z_L)]`. Thus `L` gains relative to `w_L^0` exactly if `a>w_L^0/[1-h(1-z_L)]`. With non-autonomous AI, idle compute implies `r^star=0`; conditional on adoption, zero profit gives `w_L^N=a`, while Proposition 6 requires `a>w(0)` for adoption. Therefore capability determines activation and bottom winners, while autonomy creates the rent wedge `a h(1-z_L)`.
-
----
-
-## Prompt 4 — adversarial check
+## Prompt 3 — adversarial check
 
 ### User
 
@@ -58,7 +46,7 @@ The final wording was reconciled with the May 17, 2025 accepted-manuscript versi
 
 ---
 
-## Prompt 5 — required AppliedModelingLib formal verification
+## Prompt 4 — required AppliedModelingLib formal verification
 
 ### Configuration
 
