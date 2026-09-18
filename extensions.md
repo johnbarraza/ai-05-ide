@@ -72,3 +72,15 @@ lualatex -output-directory=extra extra/presentation-long.tex
 ```
 
 The script fails loudly if the symbolic threshold, wage wedge, or selected numerical cases are inconsistent.
+
+## 6. Lean verification
+
+The `lean/` directory is the complete `papers/IT25KnowledgeEconomy/` folder produced by the required AppliedModelingLib agent run. The current proved result is `span_mul_helpCost_one_sub`: for `z < 1` and the economy assumption `0 < helpCost`, the definition
+
+$$n(z)=\frac{1}{h(1-z)}$$
+
+satisfies $n(z)h(1-z)=1$. This is the span-of-control identity used in the handwritten discrete exercise.
+
+Both `lake env lean papers/IT25KnowledgeEconomy/Model.lean` and `python3 scripts/paper_contribution.py check IT25KnowledgeEconomy --fast` returned exit code 0 in AppliedModelingLib on 2026-09-17. The latter built `IT25KnowledgeEconomy.PaperInterface` successfully.
+
+The agent stopped at its usage limit before creating source-pinned specs and proof endpoints for Propositions 5 and 6; `PaperInterface.lean` and `ProofInterface.lean` state that limitation explicitly. Consequently, the result is a **compiling partial formalization**, not a formal verification of the paper's full continuum equilibrium. The earlier hand-written Lean exercise was retained privately outside the submitted `lean/` folder so the official agent output is not mixed with a separate target.

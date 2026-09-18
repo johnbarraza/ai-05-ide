@@ -5,9 +5,10 @@
 <p align="center">
   <a href="paper/ide-talamas-2025.pdf"><img alt="Paper" src="https://img.shields.io/badge/Paper-PDF-982A34?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
   <a href="https://doi.org/10.1086/737233"><img alt="DOI" src="https://img.shields.io/badge/DOI-10.1086%2F737233-0C2852?style=for-the-badge"></a>
-  <a href="presentation.pdf"><img alt="Short deck" src="https://img.shields.io/badge/Deck-5_slides-982A34?style=for-the-badge"></a>
-  <a href="extra/presentation-long.pdf"><img alt="Extended deck" src="https://img.shields.io/badge/Extended-26_slides-0C2852?style=for-the-badge"></a>
+  <a href="presentation.pdf"><img alt="Presentation" src="https://img.shields.io/badge/Deck-27_slides-982A34?style=for-the-badge"></a>
+  <a href="hand/derivation.pdf"><img alt="Handwritten derivation" src="https://img.shields.io/badge/Handwritten-derivation-0C2852?style=for-the-badge"></a>
   <a href="extensions.md"><img alt="Audit" src="https://img.shields.io/badge/Audit-discrete_model-333333?style=for-the-badge"></a>
+  <a href="lean/README.md"><img alt="Lean check" src="https://img.shields.io/badge/Lean-check_passing-6B4FBB?style=for-the-badge&logo=lean&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -15,12 +16,15 @@
   <img alt="Beamer" src="https://img.shields.io/badge/Beamer-0C2852">
   <img alt="Python" src="https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white">
   <img alt="SymPy" src="https://img.shields.io/badge/SymPy-3B5526?logo=sympy&logoColor=white">
+  <img alt="Lean 4" src="https://img.shields.io/badge/Lean-4.30.0--rc2-6B4FBB">
   <a href="LICENSE.md"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-333333"></a>
 </p>
 
 # Artificial Intelligence in the Knowledge Economy
 
-**Enrique Ide and Eduard Talamàs (2025), _Journal of Political Economy_ 133(12), 3762–3800.** This is the refereed article—not the earlier 2024 working-paper version. [Published article](https://doi.org/10.1086/737233) · [accepted manuscript](https://arxiv.org/abs/2312.05481)
+**Enrique Ide and Eduard Talamàs (2025), _Journal of Political Economy_ 133(12), 3762–3800.** This is the refereed article—not the earlier 2024 working-paper version. [Published article](https://doi.org/10.1086/737233) · [arXiv v11 used by the Lean run](https://arxiv.org/abs/2312.05481v11)
+
+**Version read.** The economic discussion was checked against the course PDF dated May 20, 2025 (39 pages). The required Lean workflow pins arXiv v11, dated February 24, 2025 (35 pages). Propositions 1–6 have the same numbering and statements in both versions; page references below follow the course PDF.
 
 ## Question and mechanism
 
@@ -42,7 +46,7 @@ Let $w$ be the pre-AI wage, $w^*$ the autonomous-AI wage, and $w^\star$ the non-
 
 **Proposition 5.** Under the maintained assumptions above,
 
-$$B\ne\varnothing \iff z_{AI}>\bar z_{AI},\quad \bar z_{AI}\in\operatorname{int}W; \qquad T\ne\varnothing\quad\forall z_{AI}\in[0,1).$$
+$$B\ne\varnothing \iff z_{AI}>\bar z_{AI},\quad \bar z_{AI}\in\mathrm{int}(W); \qquad T\ne\varnothing\quad\forall z_{AI}\in[0,1).$$
 
 Thus autonomous AI always produces some winners at the top, but it produces winners at the bottom only when it is capable enough. The top result relies on $h<h_0$; the paper notes it may fail when $h\ge h_0$.
 
@@ -58,12 +62,15 @@ Thus autonomous AI always produces some winners at the top, but it produces winn
 ├── extra/
 │   ├── figures/            # reproducible discrete-model figure
 │   └── presentation-long.* # 26-frame oral-exam deck
-├── hand/                   # add your own handwritten photo here
+├── hand/                   # original handwritten derivation (PDF + deck image)
+├── lean/                   # complete IT25KnowledgeEconomy agent output
 ├── paper/                  # accepted manuscript and provenance
-├── presentation.tex/.pdf  # required five-frame deck
+├── presentation.tex/.pdf  # required 20-minute, 27-frame deck
 ├── discrete_model.py       # symbolic and numerical checks
 ├── extensions.md           # derivation, caveats, limiting cases
 └── prompts.md              # raw AI interaction record
 ```
 
-Run `python discrete_model.py` to reproduce the checks and figure, and compile the decks with LuaLaTeX. **Before submission, replace the placeholder in `hand/` with a real photo of your own derivation.**
+Run `python discrete_model.py` to reproduce the discrete checks and figure, and compile the deck with LuaLaTeX. The original handwritten work is included as [`hand/derivation.pdf`](hand/derivation.pdf); [`hand/derivation.jpg`](hand/derivation.jpg) is only its rendered copy for the slide deck.
+
+The required AppliedModelingLib run used model `gpt-5.6-sol` with `xhigh` reasoning and the exact course prompt for `IT25KnowledgeEconomy`. Its complete generated paper folder is preserved under [`lean/`](lean/README.md). The fast contribution check passes, including the Lean build of `IT25KnowledgeEconomy.PaperInterface`. The formal result currently proved is the span-of-control identity used by the discrete derivation; this repository does **not** claim a full formal proof of the continuum equilibrium in Propositions 5 and 6.
