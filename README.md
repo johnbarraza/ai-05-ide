@@ -22,7 +22,9 @@
 
 # Artificial Intelligence in the Knowledge Economy
 
-**Enrique Ide and Eduard Talamàs (2025), _Journal of Political Economy_ 133(12), 3762–3800.** This is the refereed article—not the earlier 2024 working-paper version. [Published article](https://doi.org/10.1086/737233) · [accepted manuscript](https://arxiv.org/abs/2312.05481)
+**Enrique Ide and Eduard Talamàs (2025), _Journal of Political Economy_ 133(12), 3762–3800.** This is the refereed article—not the earlier 2024 working-paper version. [Published article](https://doi.org/10.1086/737233) · [arXiv v11 used by the Lean run](https://arxiv.org/abs/2312.05481v11)
+
+**Version read.** The economic discussion was checked against the course PDF dated May 20, 2025 (39 pages). The required Lean workflow pins arXiv v11, dated February 24, 2025 (35 pages). Propositions 1–6 have the same numbering and statements in both versions; page references below follow the course PDF.
 
 ## Question and mechanism
 
@@ -44,7 +46,7 @@ Let $w$ be the pre-AI wage, $w^*$ the autonomous-AI wage, and $w^\star$ the non-
 
 **Proposition 5.** Under the maintained assumptions above,
 
-$$B\ne\varnothing \iff z_{AI}>\bar z_{AI},\quad \bar z_{AI}\in\operatorname{int}W; \qquad T\ne\varnothing\quad\forall z_{AI}\in[0,1).$$
+$$B\ne\varnothing \iff z_{AI}>\bar z_{AI},\quad \bar z_{AI}\in\mathrm{int}(W); \qquad T\ne\varnothing\quad\forall z_{AI}\in[0,1).$$
 
 Thus autonomous AI always produces some winners at the top, but it produces winners at the bottom only when it is capable enough. The top result relies on $h<h_0$; the paper notes it may fail when $h\ge h_0$.
 
