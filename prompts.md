@@ -58,16 +58,24 @@ The final wording was reconciled with the May 17, 2025 accepted-manuscript versi
 
 ---
 
-## Prompt 5 — required formal verification
+## Prompt 5 — required AppliedModelingLib formal verification
 
-### User
+### Configuration
 
-> SI PIDEN LEAN! ME DIJO EL PROFSOR
+- Model: `gpt-5.6-sol`
+- Reasoning effort: `xhigh`
 
-### Assistant
+### Exact user prompt
 
-> Añadiré una formalización Lean con alcance explícito: demostraré las tres identidades del ejercicio discreto (beneficio cero, umbral de ganadores de abajo y brecha salarial por autonomía), sin afirmar que eso formaliza el equilibrio continuo completo de las Proposiciones 5 y 6. También ejecutaré una auditoría de axiomas y compilaré el target dentro de EconCSLib.
+> Please formalize https://arxiv.org/abs/2312.05481v11 using the paper-formalization skill and workflow in this repository. Use IT25KnowledgeEconomy as the paper folder.
 
 ### Result
 
-The target `IT25AIKnowledgeEconomy` compiled successfully under Lean `v4.30.0-rc2`. Its three public endpoints contain no `sorry`; the explicit axiom audit lists only standard Lean/mathlib foundations.
+The run created the complete `papers/IT25KnowledgeEconomy/` work folder copied here as `lean/`. The agent exhausted its usage allowance after source acquisition, statement inventory, audit artifacts, model definitions, and one proved accounting lemma; therefore it did not produce source-pinned specifications or proof endpoints for Propositions 5 and 6. After repairing compiler-level issues in the generated `Model.lean`, these commands passed on 2026-09-17:
+
+```text
+lake env lean papers/IT25KnowledgeEconomy/Model.lean
+PYTHONPATH=. python3 scripts/paper_contribution.py check IT25KnowledgeEconomy --fast
+```
+
+The fast check built `IT25KnowledgeEconomy.PaperInterface` successfully (8315 jobs) and returned exit code 0. This is evidence that the exported Lean surface compiles; it is not evidence that the paper's main propositions were fully formalized.

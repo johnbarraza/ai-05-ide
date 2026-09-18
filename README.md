@@ -5,10 +5,10 @@
 <p align="center">
   <a href="paper/ide-talamas-2025.pdf"><img alt="Paper" src="https://img.shields.io/badge/Paper-PDF-982A34?style=for-the-badge&logo=adobeacrobatreader&logoColor=white"></a>
   <a href="https://doi.org/10.1086/737233"><img alt="DOI" src="https://img.shields.io/badge/DOI-10.1086%2F737233-0C2852?style=for-the-badge"></a>
-  <a href="presentation.pdf"><img alt="Short deck" src="https://img.shields.io/badge/Deck-5_slides-982A34?style=for-the-badge"></a>
-  <a href="extra/presentation-long.pdf"><img alt="Extended deck" src="https://img.shields.io/badge/Extended-26_slides-0C2852?style=for-the-badge"></a>
+  <a href="presentation.pdf"><img alt="Presentation" src="https://img.shields.io/badge/Deck-27_slides-982A34?style=for-the-badge"></a>
+  <a href="hand/derivation.pdf"><img alt="Handwritten derivation" src="https://img.shields.io/badge/Handwritten-derivation-0C2852?style=for-the-badge"></a>
   <a href="extensions.md"><img alt="Audit" src="https://img.shields.io/badge/Audit-discrete_model-333333?style=for-the-badge"></a>
-  <a href="lean/README.md"><img alt="Lean audit" src="https://img.shields.io/badge/Lean-3_proofs-6B4FBB?style=for-the-badge&logo=lean&logoColor=white"></a>
+  <a href="lean/README.md"><img alt="Lean check" src="https://img.shields.io/badge/Lean-check_passing-6B4FBB?style=for-the-badge&logo=lean&logoColor=white"></a>
 </p>
 
 <p align="center">
@@ -62,13 +62,15 @@ Thus autonomous AI always produces some winners at the top, but it produces winn
 ├── extra/
 │   ├── figures/            # reproducible discrete-model figure
 │   └── presentation-long.* # 26-frame oral-exam deck
-├── hand/                   # add your own handwritten photo here
-├── lean/                   # Lean 4 proof interfaces and axiom audit
+├── hand/                   # original handwritten derivation (PDF + deck image)
+├── lean/                   # complete IT25KnowledgeEconomy agent output
 ├── paper/                  # accepted manuscript and provenance
-├── presentation.tex/.pdf  # required five-frame deck
+├── presentation.tex/.pdf  # required 20-minute, 27-frame deck
 ├── discrete_model.py       # symbolic and numerical checks
 ├── extensions.md           # derivation, caveats, limiting cases
 └── prompts.md              # raw AI interaction record
 ```
 
-Run `python discrete_model.py` to reproduce the checks and figure, and compile the decks with LuaLaTeX. The matching Lean target `IT25AIKnowledgeEconomy` builds successfully in EconCSLib: all three public proof endpoints contain no `sorry`, and `lean/AxiomAudit.lean` reports only Lean/mathlib's standard foundations. See [`lean/README.md`](lean/README.md) for the exact scope. **Before submission, replace the placeholder in `hand/` with a real photo of your own derivation.**
+Run `python discrete_model.py` to reproduce the discrete checks and figure, and compile the deck with LuaLaTeX. The original handwritten work is included as [`hand/derivation.pdf`](hand/derivation.pdf); [`hand/derivation.jpg`](hand/derivation.jpg) is only its rendered copy for the slide deck.
+
+The required AppliedModelingLib run used model `gpt-5.6-sol` with `xhigh` reasoning and the exact course prompt for `IT25KnowledgeEconomy`. Its complete generated paper folder is preserved under [`lean/`](lean/README.md). The fast contribution check passes, including the Lean build of `IT25KnowledgeEconomy.PaperInterface`. The formal result currently proved is the span-of-control identity used by the discrete derivation; this repository does **not** claim a full formal proof of the continuum equilibrium in Propositions 5 and 6.

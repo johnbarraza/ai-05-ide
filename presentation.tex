@@ -432,9 +432,9 @@ Autonomy determines feasible roles and surplus channels. Capability determines w
 \end{frame}
 
 % 23
-\begin{frame}{Three-type hand derivation}
+\begin{frame}{Two-type hand derivation}
 \small
-Let $L<M<H$, $a=z_{AI}$, $n_L=[h(1-z_L)]^{-1}$, and pre-AI wage $w_L^0$.
+Let $L<H$, $a=z_{AI}$, $n_L=[h(1-z_L)]^{-1}$, and pre-AI wage $w_L^0$.
 \begin{columns}[T,onlytextwidth]
 \column{.48\textwidth}
 \begin{block}{Autonomous: $r^*=a$}
@@ -483,6 +483,33 @@ At $a=.60$, both do; $L$ still prefers non-autonomy.
 \end{frame}
 
 % 25
+\begin{frame}[fragile]{Lean check: what is actually verified}
+\footnotesize
+\begin{block}{Paper equation used by the hand derivation}
+For $z<1$ and $h>0$, the span of control is
+\[
+n(z)=\frac{1}{h(1-z)}
+\quad\Longrightarrow\quad
+n(z)h(1-z)=1.
+\]
+\end{block}
+\begin{exampleblock}{Lean statement and proof fragment}
+\scriptsize
+\begin{verbatim}
+theorem span_mul_helpCost_one_sub
+    (E : Economy) (z : Real) (hz : z < 1) :
+    span E z * (E.helpCost * (1 - z)) = 1 := by
+  rw [span]
+  exact one_div_mul_cancel
+    (mul_ne_zero (ne_of_gt E.helpCost_pos)
+      (sub_ne_zero.mpr (ne_of_gt hz)))
+\end{verbatim}
+\end{exampleblock}
+\scriptsize
+Domain encoded: $z<1$ and the structure assumption $0<h$; unlike the paper's human domain, it does not also require $0\le z$. The official fast check builds successfully. This verifies the identity, \textbf{not} the continuum equilibrium or Propositions 5--6.
+\end{frame}
+
+% 26
 \begin{frame}{Where I did not believe the AI}
 \scriptsize
 \begin{columns}[T,onlytextwidth]
@@ -506,12 +533,12 @@ Prop. 5 requires $z_{AI}>\bar z_{AI}$ for autonomous bottom winners. Prop. 6 req
 \begin{itemize}
 \item “Top always wins” additionally requires $h<h_0$ and $z_{AI}<1$.
 \item $Y^*>Y^\star$ assumes identical abundant compute and two layers.
-\item The three-type calculation is an extension, not the full market-clearing proof.
+\item The two-type calculation is an extension, not the full market-clearing proof.
 \end{itemize}
 \end{columns}
 \end{frame}
 
-% 26
+% 27
 \begin{frame}{Takeaways}
 \small
 \begin{enumerate}

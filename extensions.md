@@ -75,10 +75,12 @@ The script fails loudly if the symbolic threshold, wage wedge, or selected numer
 
 ## 6. Lean verification
 
-The `lean/` export proves three statements about this discrete extension:
+The `lean/` directory is the complete `papers/IT25KnowledgeEconomy/` folder produced by the required AppliedModelingLib agent run. The current proved result is `span_mul_helpCost_one_sub`: for `z < 1` and the economy assumption `0 < helpCost`, the definition
 
-1. `discreteAutonomousZeroProfit`: the proposed autonomous wage satisfies the zero-profit equation;
-2. `discreteBottomWinnerThreshold`: the low type wins if and only if capability exceeds the discrete threshold;
-3. `discreteNonAutonomousWedge`: the non-autonomous/autonomous wage difference is exactly $ah(1-z_L)$.
+$$n(z)=\frac{1}{h(1-z)}$$
 
-The EconCSLib target `IT25AIKnowledgeEconomy` compiled under Lean `v4.30.0-rc2` with no `sorry` or locally declared axioms. `AxiomAudit.lean` reports only `propext`, `Classical.choice`, and `Quot.sound`, the standard foundations inherited through mathlib. This is deliberately a proof of the finite accounting extension—not a claim that Propositions 5 and 6's full continuum equilibrium has been formalized.
+satisfies $n(z)h(1-z)=1$. This is the span-of-control identity used in the handwritten discrete exercise.
+
+Both `lake env lean papers/IT25KnowledgeEconomy/Model.lean` and `python3 scripts/paper_contribution.py check IT25KnowledgeEconomy --fast` returned exit code 0 in AppliedModelingLib on 2026-09-17. The latter built `IT25KnowledgeEconomy.PaperInterface` successfully.
+
+The agent stopped at its usage limit before creating source-pinned specs and proof endpoints for Propositions 5 and 6; `PaperInterface.lean` and `ProofInterface.lean` state that limitation explicitly. Consequently, the result is a **compiling partial formalization**, not a formal verification of the paper's full continuum equilibrium. The earlier hand-written Lean exercise was retained privately outside the submitted `lean/` folder so the official agent output is not mixed with a separate target.

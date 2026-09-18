@@ -1,23 +1,15 @@
-import IT25AIKnowledgeEconomy.PaperInterface
+import IT25KnowledgeEconomy.PaperInterface
 
 /-!
-# Exact-type proof endpoints
+# Proof Interface: Artificial Intelligence in the Knowledge Economy
 
-Each theorem below has exactly the type of its transparent human-facing Spec.
+This file contains exact-type proof endpoints for the transparent propositions
+in `PaperInterface.lean`. It is not a human semantic-review surface: one source
+claim is reviewed once, against its expanded `...Spec : Prop` declaration.
 -/
 
-namespace IT25AIKnowledgeEconomy
+namespace IT25KnowledgeEconomy
 
-theorem discreteAutonomousZeroProfit : discreteAutonomousZeroProfitSpec := by
-  intro a h z hden
-  exact autonomous_zero_profit a h z hden
+-- No proof endpoint until a source-pinned Spec is added.
 
-theorem discreteBottomWinnerThreshold : discreteBottomWinnerThresholdSpec := by
-  intro a h z w0 hfactor
-  exact autonomous_bottom_winner_iff a h z w0 hfactor
-
-theorem discreteNonAutonomousWedge : discreteNonAutonomousWedgeSpec := by
-  intro a h z
-  exact nonautonomous_wage_wedge a h z
-
-end IT25AIKnowledgeEconomy
+end IT25KnowledgeEconomy
